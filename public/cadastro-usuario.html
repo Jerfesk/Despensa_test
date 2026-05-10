@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário - Despensa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* CSS TOTALMENTE ISOLADO PARA ESTA PÁGINA */
+        :root {
+            --primary: #387d39;
+            --bg: #f1f6e9;
+            --white: #ffffff;
+            --red: #ef4444;
+            --text: #1a461a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+        body {
+            background-color: var(--bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; /* GARANTE QUE NÃO TENHA ROLAGEM */
+        }
+
+        .card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 0;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            gap: 10px;
+            color: var(--text);
+        }
+
+        .form { display: flex; flex-direction: column; gap: 0.8rem; }
+
+        .group { text-align: left; }
+        .group label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 3px;
+            color: var(--text);
+        }
+
+        input {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            outline: none;
+            font-size: 0.9rem;
+        }
+
+        .row { display: flex; gap: 10px; }
+
+        .actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+
+        button {
+            padding: 0.8rem;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            transition: opacity 0.2s;
+        }
+
+        .btn-save { background-color: var(--primary); }
+        .btn-del { background-color: var(--red); }
+        button:hover { opacity: 0.9; }
+
+        svg { width: 18px; height: 18px; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="header">
+            <a href="#" class="back-btn"><i data-lucide="arrow-left"></i></a>
+            <div class="title">
+                <i data-lucide="chef-hat" style="color: var(--primary)"></i>
+                <h2>Novo Usuário</h2>
+            </div>
+        </div>
+
+        <form class="form">
+            <div class="row">
+                <div class="group" style="flex: 1;">
+                    <label>ID</label>
+                    <input type="text" placeholder="001">
+                </div>
+                <div class="group" style="flex: 2;">
+                    <label>Data Nascimento</label>
+                    <input type="date">
+                </div>
+            </div>
+
+            <div class="group">
+                <label>Nome Completo</label>
+                <input type="text" placeholder="Nome do cozinheiro">
+            </div>
+
+            <div class="group">
+                <label>E-mail</label>
+                <input type="email" placeholder="email@teste.com">
+            </div>
+
+            <div class="group">
+                <label>Telefone</label>
+                <input type="tel" placeholder="(00) 00000-0000">
+            </div>
+
+            <div class="actions">
+                <button type="submit" class="btn-save">
+                    <i data-lucide="save"></i> Salvar
+                </button>
+                <button type="button" class="btn-del">
+                    <i data-lucide="trash-2"></i> Excluir
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

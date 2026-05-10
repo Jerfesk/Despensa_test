@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Produto - Despensa Inteligente</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        /* --- CSS ISOLADO E BLINDADO PARA ESTA PÁGINA --- */
+        :root {
+            --primary-green: #387d39;
+            --bg-light: #f1f6e9;
+            --text-dark: #1a461a;
+            --white: #ffffff;
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden; /* Mantém o aspecto de App fixo sem rolagem */
+        }
+
+        .app-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            width: 90%;
+            max-width: 360px;
+            text-align: center;
+        }
+
+        /* Cabeçalho / Logo */
+        .header {
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .header p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Área de Scan */
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .input-group {
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* Wrapper para o ícone de scan dentro do input */
+        .scanner-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.8rem;
+            padding-right: 2.8rem; /* Espaço para o ícone */
+            border: 1px solid #e2e8f0;
+            border-radius: var(--radius);
+            background: #fcfdfb;
+            outline: none;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        input:focus {
+            border-color: var(--primary-green);
+        }
+
+        .scan-icon-inner {
+            position: absolute;
+            right: 12px;
+            color: var(--primary-green);
+            opacity: 0.6;
+        }
+
+        /* Pilha de Botões de Ação */
+        .button-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 0.5rem;
+        }
+
+        .btn-action {
+            width: 100%;
+            padding: 0.85rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+
+        /* Botão Usar Câmera (Vazado com borda) */
+        .btn-camera {
+            background: transparent;
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
+        }
+
+        .btn-camera:hover {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        /* Botão Ver Estoque (Cinza claro/Clean) */
+        .btn-estoque {
+            background: #f8fafc;
+            color: #64748b;
+            border: 1px solid #e2e8f0;
+        }
+
+        .btn-estoque:hover {
+            background: #f1f5f9;
+        }
+
+        /* Botão Finalizar (Verde Sólido) */
+        .btn-finish {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            margin-top: 1rem;
+        }
+
+        .btn-finish:hover {
+            filter: brightness(1.1);
+        }
+
+        /* Tamanho dos ícones nos botões */
+        .btn-action svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Ajuste responsivo para telas pequenas */
+        @media (max-height: 650px) {
+            .app-card { padding: 1.5rem; }
+            .header { margin-bottom: 1rem; }
+            .logo { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="app-card">
+        <header class="header">
+            <span class="logo">🍱</span>
+            <h1>Minha Despensa</h1>
+            <p>Cadastro de Itens</p>
+        </header>
+
+        <div class="content-area">
+            <div class="input-group">
+                <label for="barcode-input">Leitor de Código de Barras</label>
+                <div class="scanner-wrapper">
+                    <input type="text" id="barcode-input" placeholder="Aguardando scan..." autofocus>
+                    <i data-lucide="scan-line" class="scan-icon-inner"></i>
+                </div>
+            </div>
+
+            <div class="button-stack">
+                <button type="button" class="btn-action btn-camera">
+                    <i data-lucide="camera"></i>
+                    Usar Câmera
+                </button>
+
+                <button type="button" class="btn-action btn-estoque" onclick="window.location.href='estoque.html'">
+                    <i data-lucide="layout-list"></i>
+                    Ver Estoque
+                </button>
+            </div>
+
+            <button class="btn-action btn-finish">Finalizar Cadastro</button>
+        </div>
+    </main>
+
+    <script>
+        // Inicializa os ícones do Lucide
+        lucide.createIcons();
+
+        // Garante que o input de código de barras esteja sempre em foco para o leitor físico
+        const barcodeInput = document.getElementById('barcode-input');
+        document.addEventListener('click', () => barcodeInput.focus());
+    </script>
+</body>
+</html>

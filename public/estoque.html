@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Estoque - Despensa Inteligente</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <main class="login-container estoque-container">
+        <header class="header-estoque">
+            <a href="cadastro.html" class="btn-back">
+                <i data-lucide="arrow-left"></i>
+            </a>
+            <div class="title-section">
+                <i data-lucide="package" class="icon-box"></i>
+                <h1>Meu Estoque</h1>
+            </div>
+        </header>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 40px;"></th> <th>Produto</th>
+                        <th>Qtd</th>
+                        <th>Validade</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox" class="product-checkbox"></td>
+                        <td class="text-left">Arroz Integral 1kg</td>
+                        <td>005</td>
+                        <td>20/12/2026 <span class="days-left">(230 dias)</span></td>
+                        <td>
+                            <div class="action-grid">
+                                <button class="btn-recipe" title="Receita">
+                                    <i data-lucide="chef-hat"></i>
+                                    <span>Receita</span>
+                                </button>
+                                <button class="btn-edit" title="Alterar"><i data-lucide="pencil"></i></button>
+                                <button class="btn-delete" title="Excluir"><i data-lucide="trash-2"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr class="status-warning">
+                        <td><input type="checkbox" class="product-checkbox"></td>
+                        <td class="text-left">Leite Integral</td>
+                        <td>012</td>
+                        <td>16/05/2026 <span class="days-left">(7 dias)</span></td>
+                        <td>
+                            <div class="action-grid">
+                                <button class="btn-recipe">
+                                    <i data-lucide="chef-hat"></i>
+                                    <span>Receita</span>
+                                </button>
+                                <button class="btn-edit"><i data-lucide="pencil"></i></button>
+                                <button class="btn-delete"><i data-lucide="trash-2"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr class="status-danger">
+                        <td><input type="checkbox" class="product-checkbox"></td>
+                        <td class="text-left">Iogurte Grego</td>
+                        <td>002</td>
+                        <td>05/05/2026 <span class="days-left">(Vencido)</span></td>
+                        <td>
+                            <div class="action-grid">
+                                <button class="btn-recipe">
+                                    <i data-lucide="chef-hat"></i>
+                                    <span>Receita</span>
+                                </button>
+                                <button class="btn-edit"><i data-lucide="pencil"></i></button>
+                                <button class="btn-delete"><i data-lucide="trash-2"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

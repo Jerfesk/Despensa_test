@@ -1,0 +1,176 @@
+/* --- 1. VARIÁVEIS E RESET --- */
+:root {
+    --primary-green: #387d39;
+    --bg-light: #f1f6e9;
+    --text-dark: #1a461a;
+    --white: #ffffff;
+    --radius: 12px;
+    --recipe-purple: #8b5cf6;
+    --edit-green: #22c55e;
+    --delete-red: #ef4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden; /* Mantém o aspecto de App fixo */
+}
+
+/* --- 2. CONTAINER ESTRUTURAL (Base para todas as páginas) --- */
+.login-container {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 24px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    width: 90%;
+    max-width: 360px; /* Padrão para Login */
+    text-align: center;
+}
+
+/* Ajustes de tamanho específicos por página */
+.estoque-container { max-width: 850px; }
+.user-container { max-width: 420px; padding: 2rem; }
+
+/* --- 3. CABEÇALHOS --- */
+.header .logo { font-size: 3rem; margin-bottom: 1rem; }
+.header h1 { margin: 0; font-size: 1.5rem; }
+.header p { opacity: 0.7; font-size: 0.9rem; margin-bottom: 2rem; }
+
+/* Cabeçalho com botão Voltar (Estoque e Usuário) */
+.header-estoque {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.btn-back {
+    position: absolute;
+    left: 0;
+    color: var(--text-dark);
+    text-decoration: none;
+    display: flex;
+}
+
+.title-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.icon-box { color: var(--primary-green); }
+
+/* --- 4. FORMULÁRIOS E INPUTS --- */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.input-group { text-align: left; }
+.input-group label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius);
+    background: #fcfdfb;
+    outline: none;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+input:focus { border-color: var(--primary-green); }
+
+/* Ajuste compacto para a página de Usuário */
+.user-container input { padding: 0.7rem; font-size: 0.9rem; }
+.user-container .login-form { gap: 0.8rem; }
+.user-container .input-group label { font-size: 0.75rem; margin-bottom: 0.3rem; }
+
+.form-row { display: flex; gap: 10px; }
+.flex-1 { flex: 1; }
+.flex-2 { flex: 2; }
+
+/* --- 5. BOTÕES --- */
+.btn-login {
+    background-color: var(--primary-green);
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: filter 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-login:hover { filter: brightness(1.1); }
+
+/* Grade de botões (Salvar/Excluir e Ações da Tabela) */
+.form-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 0.5rem;
+}
+
+.btn-delete-user { background-color: var(--delete-red); }
+
+/* --- 6. TABELA DE ESTOQUE --- */
+.table-responsive { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+th { padding: 12px 5px; font-weight: 600; border-bottom: 2px solid #e2e8f0; color: #64748b; }
+td { padding: 10px 5px; border-bottom: 1px solid #f1f5f9; text-align: center; vertical-align: middle; }
+.text-left { text-align: left; }
+
+.product-checkbox { width: 18px; height: 18px; cursor: pointer; accent-color: var(--primary-green); }
+.days-left { display: block; font-size: 0.7rem; opacity: 0.8; }
+
+/* Status de Validade */
+.status-warning { background-color: #fefce8 !important; }
+.status-danger { background-color: #fef2f2 !important; color: #991b1b; }
+
+/* Botões da Tabela */
+.action-grid { display: flex; gap: 6px; justify-content: center; align-items: center; }
+.action-grid button { border: none; border-radius: 8px; cursor: pointer; color: white; display: flex; align-items: center; justify-content: center; transition: filter 0.2s; }
+
+.btn-recipe { background-color: var(--recipe-purple); flex-direction: column; padding: 4px 8px; min-width: 60px; }
+.btn-recipe span { font-size: 0.65rem; font-weight: 600; margin-top: 2px; }
+.btn-edit { background-color: var(--edit-green); width: 32px; height: 32px; }
+.btn-delete { background-color: var(--delete-red); width: 32px; height: 32px; }
+
+/* --- 7. UTILITÁRIOS --- */
+.password-wrapper { position: relative; display: flex; align-items: center; }
+.password-wrapper input { padding-right: 2.8rem; }
+.toggle-icon { position: absolute; right: 12px; background: none; border: none; cursor: pointer; color: #94a3b8; }
+.forgot-password { font-size: 0.8rem; text-decoration: none; color: var(--primary-green); margin-top: 0.2rem; }
+
+/* Responsividade para telas muito curtas */
+@media (max-height: 650px) {
+    .user-container { padding: 1rem; }
+    .user-container .login-form { gap: 0.4rem; }
+    .header-estoque { margin-bottom: 0.5rem; }
+}

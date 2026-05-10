@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Despensa Inteligente</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <main class="login-container">
+        <header class="header">
+            <div class="logo">🌿</div>
+            <h1>Minha Despensa</h1>
+            <p>Seus produtos sob controle</p>
+        </header>
+
+        <form class="login-form">
+            <div class="input-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" placeholder="exemplo@email.com" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Senha</label>
+                <div class="password-wrapper">
+                    <input type="password" id="password" placeholder="••••••••" required>
+                    <button type="button" id="togglePassword" class="toggle-icon">
+                        <i data-lucide="eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-login">Entrar</button>
+            <a href="#" class="forgot-password">Esqueceu a senha?</a>
+        </form>
+    </main>
+
+    <script>
+        // Inicializa os ícones do Lucide
+        lucide.createIcons();
+
+        const togglePassword = document.querySelector('#togglePassword');
+        const passwordInput = document.querySelector('#password');
+
+        togglePassword.addEventListener('click', function () {
+            // Alterna o tipo do input
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            
+            // Alterna o ícone
+            const icon = this.querySelector('i');
+            if (type === 'text') {
+                icon.setAttribute('data-lucide', 'eye-off');
+            } else {
+                icon.setAttribute('data-lucide', 'eye');
+            }
+            
+            // Atualiza o ícone visualmente
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
